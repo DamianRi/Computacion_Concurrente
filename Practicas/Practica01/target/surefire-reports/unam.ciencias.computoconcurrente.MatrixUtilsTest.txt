@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: unam.ciencias.computoconcurrente.MatrixUtilsTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.397 s - in unam.ciencias.computoconcurrente.MatrixUtilsTest
+findMinimumConcurrent  Time elapsed: 0.001 s
+findMinimumBigMatrix  Time elapsed: 0.197 s
+findMinimumConcurrentBigMatrix  Time elapsed: 0.195 s
+findMinimum  Time elapsed: 0.001 s
