@@ -35,6 +35,30 @@ class MatrixUtilsTest {
     }
 
     @Test
+    void findMinimum2() throws InterruptedException{
+        matrixUtils = new MatrixUtils();
+        int[][] matrix = {
+                {4, 29, -6},
+                {15, 6, 0},
+                {25, 41, -105}
+        };
+
+        assertEquals(-105, matrixUtils.findMinimum(matrix));
+    }
+
+    @Test
+    void findMinimumConcurrent2() throws InterruptedException{
+        matrixUtils = new MatrixUtils(2);
+        int[][] matrix = {
+                {4, 29, -6},
+                {15, 6, 0},
+                {25, 41, -105}
+        };
+
+        assertEquals(-105, matrixUtils.findMinimum(matrix));
+    }
+
+    @Test
     void findMinimumBigMatrix() throws InterruptedException{
         matrixUtils = new MatrixUtils();
         int rows = 5000, columns = 1000;
