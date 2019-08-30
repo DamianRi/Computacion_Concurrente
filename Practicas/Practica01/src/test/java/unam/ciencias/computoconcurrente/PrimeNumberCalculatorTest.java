@@ -9,21 +9,21 @@ public class PrimeNumberCalculatorTest {
     PrimeNumberCalculator primeNumberCalculator;
 
     @Test
-    void zeroIsNotPrime() {
+    void zeroIsNotPrime() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertFalse(primeNumberCalculator.isPrime(0));
     }
 
     @Test
-    void oneIsNotPrime() {
+    void oneIsNotPrime() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertFalse(primeNumberCalculator.isPrime(1));
     }
 
     @Test
-    void negativeIsPrime() {
+    void negativeIsPrime() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertTrue(primeNumberCalculator.isPrime(-131));
@@ -31,58 +31,59 @@ public class PrimeNumberCalculatorTest {
 
 
     @Test
-    void isPrimeSequential() {
+    void isPrimeSequential() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertTrue(primeNumberCalculator.isPrime(191));
     }
 
     @Test
-    void isNotPrimeSequential() {
+    void isNotPrimeSequential() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertFalse(primeNumberCalculator.isPrime(192));
     }
 
     @Test
-    void isPrimeConcurrent() {
+    void isPrimeConcurrent() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator(2);
 
         assertTrue(primeNumberCalculator.isPrime(191));
     }
-
+    
     @Test
-    void isNotPrimeConcurrent() {
+    void isNotPrimeConcurrent() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator(2);
 
         assertFalse(primeNumberCalculator.isPrime(192));
-    }
-
+    }   
+    
     @Test
-    void isPrimeSequentialBigNumber() {
+    void isPrimeSequentialBigNumber() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertTrue(primeNumberCalculator.isPrime(1297633));
     }
 
     @Test
-    void isNotPrimeSequentialBigNumber() {
+    void isNotPrimeSequentialBigNumber() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator();
 
         assertFalse(primeNumberCalculator.isPrime(1298777));
     }
 
     @Test
-    void isPrimeConcurrentBigNumber() {
+    void isPrimeConcurrentBigNumber() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator(4);
 
         assertTrue(primeNumberCalculator.isPrime(1297633));
     }
-
+    
     @Test
-    void isNotPrimeConcurrentBigNumber() {
+    void isNotPrimeConcurrentBigNumber() throws InterruptedException{
         primeNumberCalculator = new PrimeNumberCalculator(4);
 
         assertFalse(primeNumberCalculator.isPrime(1298777));
     }
+
 }
