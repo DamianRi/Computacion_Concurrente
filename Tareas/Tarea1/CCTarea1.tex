@@ -76,8 +76,33 @@ $$n = 13736570.91$$
 $$\frac{(10^6)^3}{p} = 31536000s$$
 Despejando a $p$ tenemos:
 $$p = \frac{1\times 10^{18}}{31536000s} = 31709791983\leftarrow hilos$$
+\\
+\item[2. ] Usa la ley de Amdahl para resolver las siguientes preguntas:
+\begin{itemize}
 
 
+	\item[a)]Sup\'on que un programa tiene un m\'etodo M que no puede ser paralelizado y que este m\'etodo cuenta el $45\%$ del tiempo de la ejecuci\'on del programa. ¿Cu\'al es el lım\'ite de speedup general que se puede lograr ejecutando el programa en una máquina con n procesos? \\
+	
+	Respuesta:\\ Usando la ley de Amdahl $\frac{1}{(1-p)+\frac{p}{n}}$ tenemos lo siguiente $\frac{1}{(1-.45)+\frac{.45}{n}}$ a esto le aplicamos el limite de cuando n tiende a infinito lo cual la seccion $\frac{.45}{n} = 0$ sustituyendo tenemos $\frac{1}{.55} = 1.88x$ \\
+	
+	\item[b)]{Sup\'on que el m\'etodo M cuenta el $35$ del tiempo de la ejecuci\'on del programa. Sea s n el speedup con n procesos. Tu jefe te dice que debes duplicar este speedup: la versión nueva del programa debe tener un speedup $s_{n}^{'} \geq 2 * s_{n} $. Tu buscas a un programador para reemplazar M con una version mejorada, k veces m\'as r\'apida. ¿Qu\'e valor de k es requerido?}\\
+
+	Respuesta:\\
+	Observaci\'on 1:$s_{n} = \frac{1}{1-.65 +\frac{.65}{n}}$ donde aplicamos el limine donde n tiende a infinito tenemos como resultado $s_{n} = 2.85$ \\
+
+	Observaci\'on 2:$s_{n}^{'} \geq 2*2.857$ que es lo mismo que $\frac{1}{p^{'}} \geq 5.7$ despejando a $p^{'}$ tenemos que debe tener valores entre $.824 \leq p^{'} < 1 $\\
+
+	Usando las observaci\'ones 1 y 2 tenemos que $s_{n}^{'} =  \frac{1}{(1-p)*k}$ donde k es la mejora del programa M sustituyendo tenemos que $5.68 = \frac{1}{(1-.65)*k}$ por lo tanto $K \approx.5030$\\
+	
+	\item[c)]{Sup\'on que el m\'etodo M se puede acelerar tres veces. ¿Qué fracci\'on de todo el tiempo de ejecuci\'on debe contar M para que se pueda doblar el speedup del programa?}\\
+	
+	Respuesta:\\
+	Sabemos que otra intepretacion del speedup es $t^{'} = \frac{t}{s}$ donde t es el tiempo a mejorar y s es la aceleracionmejorada y $t^{'}$ es el tiempo que debe tomar. Sustituyemdo en esta interpretacion tenemos que $t^{'} = \frac{3x}{2x} = \frac{3}{2}$ que es la fraccion de tiempo que se debe mejorar para doblar el speedup del programa M.
+	
+	
+	
+	
+\end{itemize}
 \item[5. ] Considera la siguiente clase que representa un contador:\\
 \includegraphics[width=\textwidth]{Codigo5}\\
 Suponiendo que los hilos se ejecutan concurrentemente sobre el contador. Contesta las siguientes preguntas.
