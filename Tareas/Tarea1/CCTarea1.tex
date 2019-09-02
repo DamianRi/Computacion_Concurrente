@@ -105,7 +105,16 @@ $$p = \frac{1\times 10^{18}}{31536000s} = 31709791983\leftarrow hilos$$
 Respuesta:\\
 Primero notemos que el speedup de 2 procesadores es $s_{2} = \frac{1}{(1-p)+\frac{p}{2}}$ y el speedup de n procesadores es $s_{n} = \frac{1}{(1-p)+ \frac{p}{n}}$ si despejamos a p en $s_{2}$ tenemos que $p = \frac{1-s_{2}}{s_{2}(\frac{1}{n}-1)}$\\
 Ahora sustituimos p en $s_{n}$ factorizando y minimizando tenemos que $s_{n}=\frac{s_{2}}{n(s_{2}-1)+s_{2}}$
-\item[4. ]Calcula el speedup que tendrı\'a un programa con 100 procesadores si al medir el programa en forma secuencial se tarda 188 segundos y con dos procesadores tarda 104 segundos.
+\item[4. ]Calcula el speedup que tendrı\'a un programa con 100 procesadores si al medir el programa en forma secuencial se tarda 188 segundos y con dos procesadores tarda 104 segundos.\\
+Respuesta:\\
+Observemos que usando la interpretacion de speedup de esta manera $S(n)=\frac{T_{seq}}{T_{par}(n)}$
+tenemos que el speedup de dos procesadores en este ejemplo es:\\ 
+$S(2) = \frac{188s}{104s} \approx 1.8076$ y ahora ocupamos la formula del ejercicio anterior que es: 
+\begin{center}
+$s_{n}=\frac{s_{2}}{n(s_{2}-1)+s_{2}}$ \\
+\end{center}
+Ahora sustituimos en la formula por lo que obtenemos:\\
+$S(100) =\frac{1.8076}{100(1.8076-1)+1.8076}\approx 0.02189$ 
 
 \item[5. ] Considera la siguiente clase que representa un contador:\\
 \includegraphics[width=\textwidth]{Codigo5}\\
