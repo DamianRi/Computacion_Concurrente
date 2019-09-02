@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{colortbl}
 \usepackage[a4paper, total={6.5in, 10in}]{geometry}
 
@@ -234,12 +235,41 @@ Aquí lo que pasa es que la condición de carrera se da porque no los hilos no e
 
 \item[7. ] Propón un algoritmo de exclusión mutua para 3 hilos basado en turnos round robin.
 
+Propuesta.\\
+\includegraphics[width=\textwidth]{EM}\\
 \begin{itemize}
 \item[a) ] Demuestra que cumple con la propiedad de exclusión.
+[Por Contradicción.]
 
-\item[b) ] ¿Es libre de deadlock?
+Sean A, B y C, supongamos que el valor de ID es menor consecuentemente.
+Supongamos que existe una ejecución $CS_A \nrightarrow CS_B$ y $CS_B \nrightarrow CS_A$.
+para cualesquiera dos procesos. Tenemos dos casos dado el algoritmo para que esto suceda:
+\begin{itemize}
+\item[Caso a. ] Tienene diferente cantidad de veces atendidos. Supongamos que A ha sido atendido menos veces.\\
+Primero ocurrió que:
+\[1a)write_A(banderas[A] = true)\] \[ \rightarrow write_A(siguiente = (minID\hspace{0.2cm}AND \hspace{0.2cm}minVecesAtendido) = A)\]
+Para que A entre a la sección crítica:
+\[1b) read_A(banderas[A] == true)\hspace{0.2cm}AND\hspace{0.2cm}read_A(siguiente == A) \rightarrow CS_A\]
+Además, primero ocurrió que:
+\[2a)write_B(banderas[B] = true)\] \[ \rightarrow write_B(siguiente = (minID\hspace{0.2cm}AND \hspace{0.2cm}minVecesAtendido) = A)\]
+Para que B entre a la sección crítica:
+\[2b) read_B(banderas[B] == true)\hspace{0.2cm}AND\hspace{0.2cm}read_B(siguiente == B) \rightarrow CS_B\]
 
-\item[c) ] ¿Es libre de hambruna?
+Por lo que hay una contradicción entre 2a y 2b ya que la varibale "siguiente" fue escrita con el valor de "A" pero B leyó que el siguiente era "B"
+
+\item[Caso b. ] Tienen la misma cantidad de veces atendidos.\\
+
+De manera análoga al caso anterior, suponiendo las misma condiciones. El valor que leería B en la variable "siguiente" es "B" para entrar en sus sección crítica, pero por el valor léxcio de A, es menor que B (o C), por lo que la varibale A sería escrita con el valor de "A" y de esta manera B no podría leer "B" si en la última escritura de "siguiente" fue "A".
+
+\end{itemize} 
+\item[b) ] ¿Es libre de deadlock?\\
+
+Sí, ya que por el valor que se necesita para dejar de estar bloqueado, es del valor de los ID de cada hilo, estos ID's son únicos y en algún momento pasará debido a que se van atendiendo a los procesos según su cantidad de veces que se antendieron y el valor de su ID, por lo que no importa si tienen el mismo valor en atenciones se desempatará por el valor de su ID que es único.
+
+\item[c) ] ¿Es libre de hambruna?\\
+
+Sí ya que como es con base en un 'quantum' especificado, cada uno irá siendo atendido en determinado tiempo, y junto con su atención de cada proceso según el valor de su ID, estos irán siendo atendidos al menos en una ocasión.
+
 \end{itemize}
 
 
