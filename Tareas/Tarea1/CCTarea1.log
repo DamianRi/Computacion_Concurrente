@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.7.21)  2 SEP 2019 13:35
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.13)  2 SEP 2019 13:35
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.13)  2 SEP 2019 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -668,156 +664,101 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
 <Codigo5.png, id=22, 818.05624pt x 237.88875pt>
 File: Codigo5.png Graphic file (type png)
 <use Codigo5.png>
-<<<<<<< HEAD
-Package pdftex.def Info: Codigo5.png  used on input line 120.
+Package pdftex.def Info: Codigo5.png  used on input line 121.
 (pdftex.def)             Requested size: 469.75499pt x 136.60709pt.
 
-Overfull \hbox (29.3747pt too wide) in paragraph at lines 119--122
-=======
-Package pdftex.def Info: Codigo5.png  used on input line 112.
-(pdftex.def)             Requested size: 469.75499pt x 136.60709pt.
-
-Overfull \hbox (29.3747pt too wide) in paragraph at lines 111--114
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Overfull \hbox (29.3747pt too wide) in paragraph at lines 120--123
 [] 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 138--166
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 130--158
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 139--167
 
  []
 
 [4 <./Codigo5.png>]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 167--193
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 159--185
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 168--194
 
  []
 
 
-<<<<<<< HEAD
-Overfull \hbox (1.70679pt too wide) in paragraph at lines 197--200
-=======
-Overfull \hbox (1.70679pt too wide) in paragraph at lines 189--192
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Overfull \hbox (1.70679pt too wide) in paragraph at lines 198--201
 []\OT1/cmr/m/n/12 Llena la sigu-iente tabla con ejem-p-los con-cre-tos que cum-
 plan cada una de las propiedades
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 202--208
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 202--208
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 209--215
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 201--207
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 210--216
 
  []
 
 [5]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 216--222
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 208--214
+Underfull \hbox (badness 10000) in paragraph at lines 217--223
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--220
+Underfull \hbox (badness 10000) in paragraph at lines 224--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--220
+Underfull \hbox (badness 10000) in paragraph at lines 224--229
 
  []
 
 <EM.png, id=32, 1147.28625pt x 522.95375pt>
 File: EM.png Graphic file (type png)
 <use EM.png>
-Package pdftex.def Info: EM.png  used on input line 230.
+Package pdftex.def Info: EM.png  used on input line 238.
 (pdftex.def)             Requested size: 469.75499pt x 214.11717pt.
 
-Overfull \hbox (29.3747pt too wide) in paragraph at lines 229--231
+Overfull \hbox (29.3747pt too wide) in paragraph at lines 236--239
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--231
+Underfull \hbox (badness 10000) in paragraph at lines 236--239
 
  []
 
 [6 <./EM.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 223--228
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 256--257
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 264--265
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 223--228
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 260--261
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
 [7] [8] (./CCTarea1.aux) ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 2794 strings out of 494518
- 38094 string characters out of 6176313
- 122497 words of memory out of 5000000
- 6423 multiletter control sequences out of 15000+600000
- 9020 words of font info for 33 fonts, out of 8000000 for 9000
-=======
  3358 strings out of 494880
  43226 string characters out of 6179601
- 117892 words of memory out of 5000000
+ 118892 words of memory out of 5000000
  6611 multiletter control sequences out of 15000+600000
  11490 words of font info for 45 fonts, out of 8000000 for 9000
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
  36 hyphenation exceptions out of 8191
  41i,9n,31p,1281b,298s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/ams
@@ -830,14 +771,9 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-<<<<<<< HEAD
-public/amsfonts/cm/cmsy8.pfb>
-Output written on CCTarea1.pdf (7 pages, 166063 bytes).
-=======
 public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on CCTarea1.pdf (8 pages, 247694 bytes).
->>>>>>> e041ff47e034c2c86ce536dc96dd3e5f96de674c
+Output written on CCTarea1.pdf (8 pages, 250013 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
