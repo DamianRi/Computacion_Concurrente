@@ -99,10 +99,14 @@ $$p = \frac{1\times 10^{18}}{31536000s} = 31709791983\leftarrow hilos$$
 	Respuesta:\\
 	Sabemos que otra intepretacion del speedup es $t^{'} = \frac{t}{s}$ donde t es el tiempo a mejorar y s es la aceleracionmejorada y $t^{'}$ es el tiempo que debe tomar. Sustituyemdo en esta interpretacion tenemos que $t^{'} = \frac{3x}{2x} = \frac{3}{2}$ que es la fraccion de tiempo que se debe mejorar para doblar el speedup del programa M.
 	
-	
-	
-	
 \end{itemize}
+
+\item[3. ]Al ejecutar tu aplicaci\'on con dos procesadores se produce un speedup $S_{2}$ . Utiliza la Ley de Amdahl para derivar una f\'ormula para $S_{n}$ (speedup con n procesadores), en t\'erminos de n y $S_{n}$ .\\
+Respuesta:\\
+Primero notemos que el speedup de 2 procesadores es $s_{2} = \frac{1}{(1-p)+\frac{p}{2}}$ y el speedup de n procesadores es $s_{n} = \frac{1}{(1-p)+ \frac{p}{n}}$ si despejamos a p en $s_{2}$ tenemos que $p = \frac{1-s_{2}}{s_{2}(\frac{1}{n}-1)}$\\
+Ahora sustituimos p en $s_{n}$ factorizando y minimizando tenemos que $s_{n}=\frac{s_{2}}{n(s_{2}-1)+s_{2}}$
+\item[4. ]Calcula el speedup que tendrı\'a un programa con 100 procesadores si al medir el programa en forma secuencial se tarda 188 segundos y con dos procesadores tarda 104 segundos.
+
 \item[5. ] Considera la siguiente clase que representa un contador:\\
 \includegraphics[width=\textwidth]{Codigo5}\\
 Suponiendo que los hilos se ejecutan concurrentemente sobre el contador. Contesta las siguientes preguntas.
@@ -180,6 +184,42 @@ PC 6, i = 5, write(counter++) & PC 6, i = 3, write(counter++) & counter = 5\\
 
 
 \end{itemize}
+
+\item[6. ]Llena la siguiente tabla con ejemplos concretos que cumplan cada una de las propiedades indicadas justificando tus respuestas:\\
+Suponemos que los metodos que utilizamos en los siguientes programas, ya fueron programados y fueron hechos a la perfección. 
+El ejemplo más común es en una base de datos, explicaremos con detalle cada uno.
+\begin{itemize}
+
+\item Sin Condición de Carrera Con Datos
+public synchronized run(int posicion) \\
+dato = genera();\\
+write(dato, posicion);\\
+\\
+Cuando se ultilza el el synchronized, lo que pasa es que sincroniza los hilos uno a a vez para que cada uno tenga acceso a la seccion critia y pueda modificar los datos sin ningun problema, aparte con la posicion escribimos exactamente un dato a la vez. \\
+
+\item Sin Condición de Carrera Sin Datos
+public synchronized run() \\
+dato = genera();\\
+write(dato);\\
+\\
+Al quitarle como parametro la posicion, no se sabe que parte se va a  modificar, al remover la posicion quitamos la carrera con dato, ya que esta puede acceder varias veces a la misma posicion, sin importar cual sea, puede acceder dos veces a la misma. 
+
+\item Con Condición de Carrera Con Datos
+public run(int posicion) \\
+dato = genera();\\
+write(dato, posicion);\\
+\\
+Al no tener el synchronized los hilos pueden entrar en cualquier momento a la seccion critica, esto genera una condicion de carrera, cuando dos o más quieren modificar un dato en la base de datos, y al ponerle como paremetro la posicion mantemos la carrera con datos, ya que cada hilo va a modificar extactamente uno a uno esa posicion. 
+
+\item Con Condición de Carrera Sin Datos
+public run() \\
+dato = genera();\\
+write(dato);\\
+\\
+\end{itemize}
+Aquí lo que pasa es que la condición de carrera se da porque no los hilos no estan sincronizados y estos pueden entrar cuando quieran, y se quita la carrera de datos por el hecho de no especificar en qu parte de la base de datos se va a modificar, así que este puede acceder a modificar la linea dos veces.
+
+
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.7.21)  1 SEP 2019 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.7.21)  1 SEP 2019 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -325,54 +325,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-<Codigo5.png, id=17, 818.05624pt x 237.88875pt>
+[3]
+<Codigo5.png, id=22, 818.05624pt x 237.88875pt>
 File: Codigo5.png Graphic file (type png)
 <use Codigo5.png>
-Package pdftex.def Info: Codigo5.png  used on input line 107.
+Package pdftex.def Info: Codigo5.png  used on input line 111.
 (pdftex.def)             Requested size: 469.75499pt x 136.60709pt.
 
-Overfull \hbox (29.3747pt too wide) in paragraph at lines 106--109
+Overfull \hbox (29.3747pt too wide) in paragraph at lines 110--113
 [] 
  []
 
-[3 <./Codigo5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--153
+Underfull \hbox (badness 10000) in paragraph at lines 129--157
+
+ []
+
+[4 <./Codigo5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 158--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--180
+Overfull \hbox (1.70679pt too wide) in paragraph at lines 188--191
+[]\OT1/cmr/m/n/12 Llena la sigu-iente tabla con ejem-p-los con-cre-tos que cum-
+plan cada una de las propiedades
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--199
 
  []
 
-[4] [5] [6] (./CCTarea1.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--206
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 207--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--219
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--219
+
+ []
+
+[6] [7] (./CCTarea1.aux) ) 
 Here is how much of TeX's memory you used:
- 2792 strings out of 494518
- 38073 string characters out of 6176313
- 124497 words of memory out of 5000000
- 6422 multiletter control sequences out of 15000+600000
- 8713 words of font info for 32 fonts, out of 8000000 for 9000
+ 2794 strings out of 494518
+ 38094 string characters out of 6176313
+ 121497 words of memory out of 5000000
+ 6423 multiletter control sequences out of 15000+600000
+ 9020 words of font info for 33 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  41i,9n,31p,1281b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on CCTarea1.pdf (6 pages, 153691 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb>
+Output written on CCTarea1.pdf (7 pages, 163766 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
