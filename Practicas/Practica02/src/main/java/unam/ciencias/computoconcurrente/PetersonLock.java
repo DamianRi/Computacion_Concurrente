@@ -9,8 +9,8 @@ import java.util.Map;
  */
 public class PetersonLock implements Lock {
    
-    private boolean[] flag = new boolean[2];
-    private int victim;
+    private volatile boolean[] flag = new boolean[2];
+    private volatile int victim;
 
     public PetersonLock() {
     }
