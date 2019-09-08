@@ -8,15 +8,25 @@ import java.util.Map;
  * most.
  */
 public class PetersonLock implements Lock {
+   
+    private boolean[] flag = new boolean[2];
+    private int victim;
 
     public PetersonLock() {
     }
 
     @Override
     public void lock() {
+        int i = Integer.parseInt(Thread.currentThread().getName());
+        int j = 1 - i;
+        flag[i] = true;
+        victim = i;
+        while (flag[j] && victim == i) {};
     }
 
     @Override
     public void unlock() {
+        int i = Integer.parseInt(Thread.currentThread().getName());
+        flag[i] = false;
     }
 }

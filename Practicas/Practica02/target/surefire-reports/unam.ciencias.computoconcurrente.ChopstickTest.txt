@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: unam.ciencias.computoconcurrente.ChopstickTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.112 s <<< FAILURE! - in unam.ciencias.computoconcurrente.ChopstickTest
+twoThreads  Time elapsed: 0.096 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <600> but was: <0>
+	at unam.ciencias.computoconcurrente.ChopstickTest.twoThreads(ChopstickTest.java:38)
+
