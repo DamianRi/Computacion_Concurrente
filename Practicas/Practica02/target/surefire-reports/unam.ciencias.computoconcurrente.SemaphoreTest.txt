@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: unam.ciencias.computoconcurrente.SemaphoreTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.684 s <<< FAILURE! - in unam.ciencias.computoconcurrente.SemaphoreTest
-filterSemaphore  Time elapsed: 2.68 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at unam.ciencias.computoconcurrente.SemaphoreTest.filterSemaphore(SemaphoreTest.java:94)
-
