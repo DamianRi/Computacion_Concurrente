@@ -238,7 +238,7 @@ Probar como m\'aximo los subprocesos $n-1$ obtienen el valor DOWN.
 
 Para que cualquier hilo obtenga el valor DOWN, vemos que deben haber leído
 GoRight para ser falso (para que no puedan regresar RIGHT). Asume n hilos
-pudimos hacer esto. Luego de haber vuelto ABAJO, todos los hilos
+pudimos hacer esto. Luego de haber vuelto DOWN, todos los hilos
 han tenido que haber leído por última vez para ser desiguales a su valor. Pero como todo n
 los subprocesos ya completaron la línea donde establecieron el último en su ID
 no quedan otros hilos para cambiar el último valor. Sabemos que algunos
@@ -250,7 +250,7 @@ capaz de regresar DOWN.
 
 Probar que como máximo, los subprocesos n-1 obtienen el valor RIGHT.
 
-En primer lugar, vemos las siguientes restricci\'ones para regresar a la DERECHA:
+En primer lugar, vemos las siguientes restricci\'ones para regresar a RIGHT:
 
 
 \begin{center}
