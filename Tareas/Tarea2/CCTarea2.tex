@@ -28,11 +28,77 @@
 con las propiedades de exclusi\'on y no deadlock? Demuestra o da una
 ejecuci\'on en donde no se cumpla.
 
+\item[•]]El algoritmo ya NO cumple con la exclusión mutua, ya que existe la siguiente ejecución como contraejemplo:
+(Suponemos que ambas banderas se inicializan como $false$. Damos por hecho que ambos hilos han ejecutado las primeras tres líneas de código)
+
+\resizebox*{.9\textwidth}{!}{
+\begin{tabular}{|c | c | c|}
+\hline
+\rowcolor[gray]{0.9}$H1$ & $H2$ & Memoria \\
+\hline 
+- & write(victim = B) & victim = B\\
+write(victim = A) & - & victim = A\\
+write(flag[A] = true) & - & victim = A, f[A]=T\\
+read((flag[B]) = false and (victim == A) = true) & - & victim = A, f[A]=T\\
+ - & write(flag[B] = true) & victim = A, f[A]=T, f[B]=T\\
+ - & read((flag[A]) = true and (victim == B) = false) & victim = A, f[A]=T, f[B]=T\\ 
+ //CS & //CS & victim = A, f[A]=T, f[B]=T\\
+\hline
+\end{tabular}}\\
+
+\item[•] Sí cumple con No-Deadlock.\\
+Demostración.[Por contradicción]
+Supongamos que cumple con Deadlock, entonces existe una ejecución en la que se cumple que $Lock_A \nrightarrow Lock_B$ además que $Lock_B \nrightarrow Lock_A$.
+Entonces sabemos que:
+$$1)read_A(flag[B]== true AND victim == A) \rightarrow Lock_A$$
+$$2)read_B(flag[A]== true AND victim == B) \rightarrow Lock_B$$
+Supongamos sin perdida de generalidad que ocurre $Lock_A$. Entonces tuvo que ocurrir 1) así 
+$$read_B(flag[A] == false) OR read_B(victim != B)$$
+en particular, tenemos que se cumple
+$$read_B(victim != B)$$ ya que A leyó que victim == A.\\
+Por lo tanto al menos un hilo logra acceder a la sección crítica.
 \item[b) ]Sup\'on ahora que la instrucci\'on de la l\'inea 6 se cambia por:
 \begin{center}
 $while(flag[j]$ \&\& $victim == j)$
 \end{center}
 Da un ejemplo en donde se cumpla la exclusi\'on mutua y otro en donde no.
+
+\item[•] Se cumple la exclusión mutua
+
+\resizebox*{.9\textwidth}{!}{
+\begin{tabular}{|c | c | c|}
+\hline
+\rowcolor[gray]{0.9}$H1$ & $H2$ & Memoria \\
+\hline 
+write(victim = A) & - & victim = A\\
+write(flag[A] = true) & - & victim = A, f[A]=T\\
+read((flag[B]) = false and (victim == B) = false) & - & victim = A, f[A]=T\\
+ //CS & - & victim =A, f[A] = T\\
+write(flag[A] = false) & - & victim = A, f[A] = F\\
+ - & write(victim = B) & victim = B, f[A] = F\\
+ - & write(flag[B] = true) & victim = B, f[A]=F, f[B]=T\\
+ - & read((flag[A]) =false and (victim == A) = false) & victim = B, f[A]=F, f[B]=T\\ 
+ - & //CS & victim = B, f[A]=F, f[B]=T\\
+ - & write(flag[B] = false) & victim = B, f[A] =F, f[B] =F\\
+\hline
+\end{tabular}}\\
+
+\item[•] No se cumple la exlusión mutua
+
+\resizebox*{.9\textwidth}{!}{
+\begin{tabular}{|c | c | c|}
+\hline
+\rowcolor[gray]{0.9}$H1$ & $H2$ & Memoria \\
+\hline 
+write(victim = A) & - & victim = A\\
+ - & write(victim = B) & victim = B\\
+write(flag[A] = true) & - & victim = B, f[A]=T\\
+read((flag[B]) = false and (victim == B) = true) & - & victim = B, f[A]=T\\
+ - & write(flag[B] = true) & victim = B, f[A]=T, f[B]=T\\
+ - & read((flag[A]) = true and (victim == A) = false) & victim = B, f[A]=T, f[B]=T\\ 
+ //CS & //CS & victim = B, f[A]=T, f[B]=T\\
+\hline
+\end{tabular}}\\
 
 \end{itemize}
 
