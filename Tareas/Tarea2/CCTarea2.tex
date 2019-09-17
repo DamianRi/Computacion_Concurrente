@@ -108,26 +108,112 @@ read((flag[B]) = false and (victim == B) = true) & - & victim = B, f[A]=T\\
 \begin{center}
 \includegraphics[width=0.7\textwidth]{aliceCode.png}\\
 \end{center}
+Traducimos el algoritmo a código:\\
+//Alice\\
+flag[A] = true\\
+while(flag[B]);\\
+//CS\\
+flag[A] = flase\\
 
-
-
+//Bob\\
+flag[B] = true\\
+while(flag[A])\{\\
+	flag[B] = false\\
+	while(flag[A]);\\
+	flag[B] = true;\\
+	\}\\
+while(flag[A]);\\
+//CS\\
+flag[B] = flase\\
 \begin{itemize}
+\item[a) ]Demuestra que resuelve el problema de la exclusi\'on mutua.\\
+Por contradicción. Suponemos que existe una ejecución en la cual ocurre que $CS_A \nrightarrow CS_B$ y que $CS_B \nrightarrow CS_A$
+Tenemos entonces que:
 
-\item[a) ]Demuestra que resuelve el problema de la exclusi\'on mutua.
+$$1) write_A(flag[A] = true) \rightarrow read_A(flag[B] == flase) \rightarrow CS_A$$
+\[2) write_B(flag[B) = true) \rightarrow read_B(flag[A] == false)$$  
+$$\rightarrow read_B(flag[A] == flase) \rightarrow CS_B)\]
+
+Revisaremos dos casos, sobre el orden de la última escritura
+
+\item[Caso 1] Bob escribe al último\\
+Entonces:
+$$3) write_A(flag_A = true) \rightarrow write_B(flag[B] = true)$$
+por transitividad de $\rightarrow$ con 3) y 2)
+tenemos
+$$4) write_A(flag[A] = true) \rightarrow read_A(flag[A] == false) $$
+por lo que es una contradicción
+
+\item[Caso 2] Alice escribe al último\\
+Entonces tenemos:
+$$5) write_B(flag[B] = true) \rightarrow write_A(flag[A] = true) $$
+tenemos dos subcasos en la ejecución de B:
+\begin{itemize}
+\item[Caso 2.1] B entra en el primer while\\
+Si entra en el while tenemos:
+$$ 6) read_B(flag[A] == true) \rightarrow write_B(flag[B] = false)$$
+$$ \rightarrow read_B(flag[A] == false)$$
+$$ \rightarrow wrtie_B(flag[B] = true)$$
+
+Entonces por 6) y 5) sabemos que entre los siguientes eventos no ocurre ningun otro evento
+$$7) write_B(flag[B] = true) \rightarrow write_A(flag[A] = true)$$
+por la transitividad de $\rightarrow$ entre 7) y 1) tenemos
+$$write_B(flag[B] = true) \rightarrow read_A(flag[B] == flase)$$
+lo cual es una contradicción
+
+\item[Caso 2.2] Bob no entra en el primer while\\
+Entonces sabemos que no existe un escritura de flag[B] entre los dos eventos, siendo así, por transitividad de $\rightarrow$ entre 5) y 1) tenemos
+$$8) write_B(flag[B] = true) \rightarrow read_A(flag[B] == false) $$
+lo cual es una contradicción
+
+\end{itemize}
+Por lo tanto vemos que la suposición es incorrecta.\\
+Por lo tanto si se resuelte el problema de la exlusión mutua.
+
+
+
 \item[b) ]Demuestra por qu\'e no cumple con la propiedad libre de hambruna.
-\item[c) ]El algoritmo cumple con la propiedad de no deadlock?
+
+Basta con mostrar la siguiente ejecución:\\
+\resizebox*{.9\textwidth}{!}{
+\begin{tabular}{|c | c | c|}
+\hline
+\rowcolor[gray]{0.9}$Alice$ & $Bob$ & Memoria \\
+\hline 
+write(flag[A] = true) & write(flag[B] = true) & flag[A] = T, flag[B] = T\\
+ read(flag[B] == true) & read(flag[A] == true) & flag[A] = T, flag[B] = T\\
+ ... esperando & write(flag[B] = false) & flag[A] = T, flag[B] = F\\
+ //CS & .. esperando &  flag[A] = T, flag[B] = F\\
+ write(flag[A] = false) & - & flag[A] = F, flag[B] = F\\
+write(flag[A] = true) & write(flag[B] = true) & flag[A] = T, flag[B] = T\\
+ read(flag[B] == true) & read(flag[A] == true) & flag[A] = T, flag[B] = T\\
+ ... esperando & write(flag[B] = false) & flag[A] = T, flag[B] = F\\
+ //CS & .. esperando &  flag[A] = T, flag[B] = F\\
+  
+\hline
+\end{tabular}}\\
+Podemos repetir los pasos justo después de que el Alice escribe su bandera como falso, y Bob nunca entraría en la sección crítica.
+
+\item[c) ]El algoritmo cumple con la propiedad de no deadlock?\\
+Sí, ya que al menos Alice pasará a la sección crítica
 \item[d) ]Cu\'al es la desventaja del algoritmo? Argumenta por qu\'e es dif\'icil de
-generalizar.
+generalizar.\\
+Las diferentes cerificaciónes mediante while's y también el cambio de valor de una variable en diferentes ocasiones. No se puede generalizar ya que Bob depende exclusivamente del otro hilo, así como Alice, por lo que al generalizar para más hilos crear la dependencia entre los hilos para que funcionen correctamente los whiles, se terminaría con demasiadas verificaciones de while para algún k hilo.
+
 \end{itemize}
 
 
 \item[3. ]Sup\'on que tienes la instrucci\'on swap(A,B) que intercambia de manera at\'omica los valores de las variables A,B.
 
 \begin{itemize}
-\item[a) ]Da una propuesta de codificaci\'on para un objeto Look que resuelva el problema de la exclusi\'on mutua para dos procesos.
-\item[b) ]Demuestra que tu algoritmo cumple con la propiedad de exclusi\'on y no deadlock.
-\end{itemize}
+\item[a) ]Da una propuesta de codificaci\'on para un objeto Look que resuelva el problema de la exclusi\'on mutua para dos procesos.\\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{lock.png}\\
+\end{center}
 
+\item[b) ]Demuestra que tu algoritmo cumple con la propiedad de exclusi\'on y no deadlock.\\
+Dado que es prácticamente el mismo algoritmo que el de Peterson, ya sabemos que este cumple con ambas propiedades
+\end{itemize}
 \item[4. ] Considera la siguiente modificaci\'on de la clase contador, que es ejecutada por dos procesos concurrentemente cuyos ID\' s son (0 y 1):
 
 
@@ -188,6 +274,7 @@ Esto contin\'ua hasta que A se despierte y siga adelante.
 \begin{center}
  $while((Ek$ $!=$ me) $(level[k] > i$ \&\& $victim[i] == me))$
 \end{center}
+Demuestra o da un contraejemplo si cumple con las propiedades de exclusión, no-deadlock, libre hambruna, FCFS.
 
 \item[8. ]Una forma de generalizar el algoritmo de Peterson para n hilos (sup\'on que n es potencia de 2) es utilizar varios candados de 2 hilos en un \'arbol binario.
 A cada hilo es asignado un candado en una hoja que comparte con otro hilo.Cada candado trata a cada hilo como hilo 0 o hilo 1.

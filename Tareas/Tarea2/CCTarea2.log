@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.16)  16 SEP 2019 22:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.16)  17 SEP 2019 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,49 +360,74 @@ File: aliceCode.png Graphic file (type png)
 <use aliceCode.png>
 Package pdftex.def Info: aliceCode.png  used on input line 109.
 (pdftex.def)             Requested size: 328.82706pt x 285.23271pt.
-[2 <./aliceCode.png>]
-<CounterCode.png, id=20, 708.6475pt x 435.6275pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--128
+
+ []
+
+[2 <./aliceCode.png>] [3]
+Overfull \hbox (8.25179pt too wide) in paragraph at lines 177--196
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
+
+ []
+
+<lock.png, id=23, 350.05782pt x 160.34906pt>
+File: lock.png Graphic file (type png)
+<use lock.png>
+Package pdftex.def Info: lock.png  used on input line 211.
+(pdftex.def)             Requested size: 328.82706pt x 150.6327pt.
+[4 <./lock.png (PNG copy)>]
+<CounterCode.png, id=27, 708.6475pt x 435.6275pt>
 File: CounterCode.png Graphic file (type png)
 <use CounterCode.png>
-Package pdftex.def Info: CounterCode.png  used on input line 135.
+Package pdftex.def Info: CounterCode.png  used on input line 221.
 (pdftex.def)             Requested size: 328.82706pt x 202.14592pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--150
+Underfull \hbox (badness 10000) in paragraph at lines 233--236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
-[3 <./CounterCode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 200--202
+[5 <./CounterCode.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
 
  []
 
-[4]
-<final.png, id=29, 687.56876pt x 428.60126pt>
+[6]
+<final.png, id=36, 687.56876pt x 428.60126pt>
 File: final.png Graphic file (type png)
 <use final.png>
-Package pdftex.def Info: final.png  used on input line 250.
+Package pdftex.def Info: final.png  used on input line 337.
 (pdftex.def)             Requested size: 328.82706pt x 204.97417pt.
- [5 <./final.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 300--304
+ [7 <./final.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 387--391
 
  []
 
-[6] [7] (./CCTarea2.aux) ) 
+[8] [9] (./CCTarea2.aux) ) 
 Here is how much of TeX's memory you used:
- 3112 strings out of 494518
- 41846 string characters out of 6176313
+ 3119 strings out of 494518
+ 41940 string characters out of 6176313
  114984 words of memory out of 5000000
- 6720 multiletter control sequences out of 15000+600000
+ 6726 multiletter control sequences out of 15000+600000
  11183 words of font info for 44 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  41i,9n,31p,632b,316s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -415,10 +440,10 @@ re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on CCTarea2.pdf (7 pages, 299995 bytes).
+Output written on CCTarea2.pdf (9 pages, 323159 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
