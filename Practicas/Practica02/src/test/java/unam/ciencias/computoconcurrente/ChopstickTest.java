@@ -34,8 +34,8 @@ public class ChopstickTest {
         threads[1].start();
         threads[0].join();
         threads[1].join();
-        System.out.println("Veces tomado: "+ chopstick.getTimesTaken());
-        System.out.println("Buffer: "+ buffer.toString());
+        //System.out.println("Veces tomado: "+ chopstick.getTimesTaken());
+        //System.out.println("Buffer: "+ buffer.toString());
         assertTrue(buffer.toString().matches("^(ab|cd)+$"));
         assertEquals(2 * ROUNDS, chopstick.getTimesTaken());
     }
