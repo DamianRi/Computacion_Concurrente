@@ -28,7 +28,7 @@
 con las propiedades de exclusi\'on y no deadlock? Demuestra o da una
 ejecuci\'on en donde no se cumpla.
 
-\item[•]]El algoritmo ya NO cumple con la exclusión mutua, ya que existe la siguiente ejecución como contraejemplo:
+\item[•]El algoritmo ya NO cumple con la exclusión mutua, ya que existe la siguiente ejecución como contraejemplo:
 (Suponemos que ambas banderas se inicializan como $false$. Damos por hecho que ambos hilos han ejecutado las primeras tres líneas de código)
 
 \resizebox*{.9\textwidth}{!}{
@@ -170,8 +170,6 @@ lo cual es una contradicción
 Por lo tanto vemos que la suposición es incorrecta.\\
 Por lo tanto si se resuelte el problema de la exlusión mutua.
 
-
-
 \item[b) ]Demuestra por qu\'e no cumple con la propiedad libre de hambruna.
 
 Basta con mostrar la siguiente ejecución:\\
@@ -215,20 +213,50 @@ Las diferentes cerificaciónes mediante while's y también el cambio de valor de
 Dado que es prácticamente el mismo algoritmo que el de Peterson, ya sabemos que este cumple con ambas propiedades
 \end{itemize}
 \item[4. ] Considera la siguiente modificaci\'on de la clase contador, que es ejecutada por dos procesos concurrentemente cuyos ID\' s son (0 y 1):
-
-
 \begin{center}
 \includegraphics[width=0.7\textwidth]{CounterCode.png}\\
 \end{center}
 
-
 \begin{itemize}
-\item[a) ]Muestra una ejecuci\'on en donde los hilos llegan a un estado de deadlock. 
+\item[a) ]Muestra una ejecuci\'on en donde los hilos llegan a un estado de deadlock.\\
+Damos por hecho que ambos hilos ejecutan todas las instrucciones hasta el punto en que entran al $for$, entonces tenemos. (wte = wantToEnter)\\ 
+\resizebox*{.9\textwidth}{!}{
+\begin{tabular}{|c | c | c|}
+\hline
+\rowcolor[gray]{0.9}$0$ & $1$ & Memoria \\
+\hline 
+write(wantToEnter[0] = true) & write(wantToEnter[1] = true) & wte[0] = T, wte[1] = T\\
+read(wantToEnter[1]==true) & read(wantToEnter[0]==true & wte[0] = T, wte[1] = T\\
+write(wantToEnter[0] = false) & write(wantToEnter[1] = false) & wte[0] = F, wte[1] = F\\
+write(wantToEnter[0] = true) & write(wantToEnter[1] = true) & wte[0] = T, wte[1] = T\\
+read(wantToEnter[1]==true) & read(wantToEnter[0]==true & wte[0] = T, wte[1] = T\\
+write(wantToEnter[0] = false) & write(wantToEnter[1] = false) & wte[0] = F, wte[1] = F\\
+write(wantToEnter[0] = true) & write(wantToEnter[1] = true) & wte[0] = T, wte[1] = T\\
+. & . & .\\
+. & . & .\\
+. & . & .\\
+\hline
+\end{tabular}}\\
+Por lo que ambos hilos desean entrar a la sección crítica, sus variables se actualizan al mismo tiempo, entonces ninguno de los dos entraría nunca a la sección crítica.
 
-\item[b) ] Demuestra que el algoritmo no tiene una condici\'on de carrera, es decir, toda ejecucin que termina siempre imprime el mismo resultado.
+\item[b) ] Demuestra que el algoritmo no tiene una condici\'on de carrera, es decir, toda ejecución que termina siempre imprime el mismo resultado.
 \end{itemize}
+Basta con mostrar que el algoritmo cumple con exclusión mutua.\\
+Por contradicción. Supongamos que existe una ejecución en la que se cumple que $CS_0 \nrightarrow CS_1$ y $CS_1 \nrightarrow CS_0$\\
+$$1) write_0(wantToEnter[0] = true) \rightarrow read_0(wantToEnter[1] == false)$$ $$\rightarrow CS_0$$
+$$2) write_1(wantToEnter[1] = true) \rightarrow read_1(wantToEnter[0] == false)$$ $$\rightarrow CS_1$$
+Suponemos sin perdida de generalidad que el hilo 0, entra en el while, entonces:\\
+$$3) write_1 (wantToEnter[1] = true) \rightarrow read_0 (wantToEnter[1] == true)$$
+$$4) write_0 (wantToEnter[0] = true) \rightarrow read_0(wantToEnter[1] == true)$$
+$$5) read_0 (wantToEnter[1] = true) \rightarrow write_0(wantToEnter[0] == true)$$
+$$6) write_0 (wantToEnter[0] = false) \rightarrow write_0 (wantToEnter[0] = true)$$
 
+Entonces por 5) y 1) tenemos\\
+$$6) read_0 (wantToEnter[1] = true) \rightarrow  read_0(wantToEnter[1] == false)$$
 
+Por lo tanto es una contradicción. \\
+Por lo que el algoritmo cumple con la exclusión mutua.\\
+Por lo tanto cada hilo entra a la sección crítica independientemente, con lo cual $this.counter++$ es leida y modificada por cada hilo, con lo cual el resultado será siempre el mismo. 
 
 \item[5. ]¿Porqu\'e requerimos definir una secci\'on de entrada (doorway), porqu\'e no podemos definir un algoritmo de exclusi\'on mutua que cumpla con la propiedad FCFS basado en el orden en el que los hilos ejecutan la primer instrucción del m\'etodo lock? Argumenta tu respuesta caso por caso seg\'un la naturaleza de la primera instrucción ejecutada por el método lock(): una lectura o una
 escritura, a registros separados o a un mismo registro.\\

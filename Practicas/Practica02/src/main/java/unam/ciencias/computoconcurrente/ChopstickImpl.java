@@ -22,7 +22,7 @@ public class ChopstickImpl implements Chopstick {
     public void take(){
         this.timesTaken = aTimes.incrementAndGet();
         while(this.taken);
-        System.out.println("Tomando Chopstick ");
+        System.out.print(" ");
         this.aBoolean.set(true);
         this.taken = aBoolean.get();
     }   

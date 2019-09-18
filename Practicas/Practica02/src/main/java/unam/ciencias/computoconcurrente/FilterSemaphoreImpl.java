@@ -7,25 +7,25 @@ public class FilterSemaphoreImpl implements Semaphore {
     private int totalThreads;
     private int permits;
     private int count;
-    private AtomicInteger[] level;
-    private AtomicInteger[] victim;
+    private volatile int[] level;
+    private volatile int[] victim;
+    
+    /* Con mutex
     private ReentrantLock mutex;
     private Condition condition;
+    */
     public FilterSemaphoreImpl(int totalThreads, int permits) {
         this.totalThreads = totalThreads;
         this.permits = permits;
-        this.count = 0;
+        this.count = totalThreads-permits+1;
 
-        level = new AtomicInteger[permits];
-        victim = new AtomicInteger[permits];
+        level = new int[totalThreads];
+        victim = new int[count];
 
-        for(int i = 1; i < permits; i++){
-            level[i] = new AtomicInteger();
-            victim[i] = new AtomicInteger();
-        }
-
+        /* Con Mutex
         mutex = new ReentrantLock();
         condition = mutex.newCondition();
+        */
         
 
     }
@@ -37,6 +37,22 @@ public class FilterSemaphoreImpl implements Semaphore {
 
     @Override
     public void acquire(){     
+        
+        //Lock del filtro
+        int i = Integer.parseInt(Thread.currentThread().getName());
+        for(int l = 1; l < count; l++){
+            level[i] = l; // Marca que está interesado
+            victim[l] = i; // Se hace la vistima del nivel
+
+            //verificamos si existe un k que cumpla lo del while
+            for (int k = 0 ; k < totalThreads; k++) {
+                while( (k != i && (level[k] >= l)) && victim[l] == i ){ 
+                    //Esperamos mucho tiempo
+                }
+            }
+        }
+        
+        /* Con mutex
         try{
             mutex.lock();
             while(count == permits){
@@ -47,48 +63,20 @@ public class FilterSemaphoreImpl implements Semaphore {
         }catch (InterruptedException e){
             e.toString();
         }
-        /*
-
-        //Lock del filtro
-        int i = Integer.parseInt(Thread.currentThread().getName());
-        for(int l = 1; l < permits; l++){
-            level[i].set(l);
-            victim[l].set(i);
-            for (int k = 0 ; k < permits; k++) {
-                while( (k != i && (level[k].get() >= l)) && victim[l].get() == i ){ // 
-                    //Esperamos mucho tiempo
-                }
-            }
-        }
-        
-        count++;
-        level[i].set(0);
         */
     }
 
     @Override
     public void release() {
+                
+        int i = Integer.parseInt(Thread.currentThread().getName());
+        level[i] = 0; //Se desinteresa
+
+        /* Con mutex
         mutex.lock();
         count--;
         condition.signalAll();
         mutex.unlock();
-        /*
-
-        int i = Integer.parseInt(Thread.currentThread().getName());
-        for(int l = 1; l < permits; l++){
-            level[i].set(l);
-            victim[l].set(i);
-            for (int k = 0 ; k < permits; k++) {
-                while((k != i) && (level[k].get() >= l && victim[l].get() == i) ){ // 
-                    //Esperamos mucho tiempo
-                }
-            }
-        }
-        
-        int i = Integer.parseInt(Thread.currentThread().getName());
-        
-        count--;
-        level[i].set(0);
         */
     }
 }
