@@ -1,7 +1,6 @@
 package unam.ciencias.computoconcurrente;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.lang.ThreadLocal;
 
 public class MCSLock implements Lock {
 
@@ -11,15 +10,20 @@ public class MCSLock implements Lock {
     public MCSLock() {
         queue = new AtomicReference<QNode>(null);
         myNode = new ThreadLocal<QNode>() {
+            @Override
             protected QNode initialValue() {
                 return new QNode();
             }
         };
     }
+    class QNode {
+        volatile boolean locked = false;
+        volatile QNode next = null;
+    }
 
     @Override
     public void lock() {
-        /*
+        
         QNode qnode = myNode.get();
         QNode pred = queue.getAndSet(qnode);
         if (pred != null) {
@@ -29,12 +33,12 @@ public class MCSLock implements Lock {
             while (qnode.locked) {
             }
         }
-        */
+        
     }
 
     @Override
     public void unlock() {
-        /*
+        
         QNode qnode = myNode.get();
         if (qnode.next == null) {
             if (queue.compareAndSet(qnode, null))
@@ -45,12 +49,7 @@ public class MCSLock implements Lock {
         }
         qnode.next.locked = false;
         qnode.next = null;
-        */
-    }
-
-    class QNode {
-        volatile boolean locked = false;
-        QNode next = null;
+    
     }
 
 }

@@ -1,0 +1,13 @@
+unam/ciencias/computoconcurrente/CLHLock$QNode.class
+unam/ciencias/computoconcurrente/Backoff.class
+unam/ciencias/computoconcurrente/Lock.class
+unam/ciencias/computoconcurrente/MCSLock$QNode.class
+unam/ciencias/computoconcurrente/MCSLock$1.class
+unam/ciencias/computoconcurrente/MCSLock.class
+unam/ciencias/computoconcurrente/BackoffLock.class
+unam/ciencias/computoconcurrente/TASLock.class
+unam/ciencias/computoconcurrente/CLHLock$2.class
+unam/ciencias/computoconcurrente/App.class
+unam/ciencias/computoconcurrente/CLHLock.class
+unam/ciencias/computoconcurrente/CLHLock$1.class
+unam/ciencias/computoconcurrente/TTASLock.class

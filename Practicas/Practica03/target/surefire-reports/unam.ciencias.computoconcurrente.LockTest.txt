@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: unam.ciencias.computoconcurrente.LockTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 215.552 s - in unam.ciencias.computoconcurrente.LockTest
+tasLock  Time elapsed: 4.49 s
+ttasLock  Time elapsed: 4.514 s
+backoffLock  Time elapsed: 41.659 s
+clhLock  Time elapsed: 66.552 s
+mcsLock  Time elapsed: 98.218 s
