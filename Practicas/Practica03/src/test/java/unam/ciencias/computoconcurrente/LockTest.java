@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LockTest {
-    static final int THREADS = 4;
+    static final int THREADS = 29;
     static final int ITERATIONS = 50;
-    static final int MAX_VALUE = 1000000;
+    static final int MAX_VALUE = 10000;
     static final int WORK_SIZE = MAX_VALUE / THREADS;
     static final int REMAINING_WORK = MAX_VALUE % THREADS;
     volatile Counter counter;
@@ -16,26 +16,31 @@ public class LockTest {
     @Test
     void tasLock() throws InterruptedException {
         performTest(new TASLock());
+        System.out.println("Termine1");
     }
 
     @Test
     void ttasLock() throws InterruptedException {
         performTest(new TTASLock());
+        System.out.println("Termine2");
     }
 
     @Test
     void backoffLock() throws InterruptedException {
         performTest(new BackoffLock());
+        System.out.println("Termine3");
     }
 
     @Test
     void clhLock() throws InterruptedException {
         performTest(new CLHLock());
+        System.out.println("Termine4");
     }
 
     @Test
     void mcsLock() throws InterruptedException {
         performTest(new MCSLock());
+        System.out.println("Termine5");
     }
 
     void performTest(Lock lock) throws InterruptedException {
@@ -50,9 +55,11 @@ public class LockTest {
 
             for(Thread t : threads) {
                 t.start();
+               
             }
 
             for(Thread t : threads) {
+                
                 t.join();
             }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="unam.ciencias.computoconcurrente.LockTest" time="215.552" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="unam.ciencias.computoconcurrente.LockTest" time="221.029" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="MX"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-13-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire/surefirebooter17447707819123825012.jar /home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire 2019-10-06T13-59-14_486-jvmRun1 surefire10073683445381325609tmp surefire_0898670104086250306tmp"/>
+    <property name="sun.java.command" value="/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire/surefirebooter6827300617652435713.jar /home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire 2019-10-06T16-02-19_248-jvmRun1 surefire10558307385560814549tmp surefire_07705481582208924163tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/test-classes:/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/classes:/home/alexis/.m2/repository/org/junit/jupiter/junit-jupiter/5.5.1/junit-jupiter-5.5.1.jar:/home/alexis/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.1/junit-jupiter-api-5.5.1.jar:/home/alexis/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/alexis/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/alexis/.m2/repository/org/junit/platform/junit-platform-commons/1.5.1/junit-platform-commons-1.5.1.jar:/home/alexis/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.1/junit-jupiter-params-5.5.1.jar:/home/alexis/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.1/junit-jupiter-engine-5.5.1.jar:/home/alexis/.m2/repository/org/junit/platform/junit-platform-engine/1.5.1/junit-platform-engine-1.5.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire/surefirebooter17447707819123825012.jar"/>
+    <property name="surefire.real.class.path" value="/home/alexis/Escritorio/semestre9/Concurrente/Practicas/Practica03/target/surefire/surefirebooter6827300617652435713.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="13+13-Ubuntu-0ubunt1"/>
     <property name="user.name" value="alexis"/>
@@ -53,9 +53,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="57.0"/>
   </properties>
-  <testcase name="tasLock" classname="unam.ciencias.computoconcurrente.LockTest" time="4.49"/>
-  <testcase name="ttasLock" classname="unam.ciencias.computoconcurrente.LockTest" time="4.514"/>
-  <testcase name="backoffLock" classname="unam.ciencias.computoconcurrente.LockTest" time="41.659"/>
-  <testcase name="clhLock" classname="unam.ciencias.computoconcurrente.LockTest" time="66.552"/>
-  <testcase name="mcsLock" classname="unam.ciencias.computoconcurrente.LockTest" time="98.218"/>
+  <testcase name="tasLock" classname="unam.ciencias.computoconcurrente.LockTest" time="0.194"/>
+  <testcase name="ttasLock" classname="unam.ciencias.computoconcurrente.LockTest" time="0.144"/>
+  <testcase name="backoffLock" classname="unam.ciencias.computoconcurrente.LockTest" time="40.864"/>
+  <testcase name="clhLock" classname="unam.ciencias.computoconcurrente.LockTest" time="179.602"/>
+  <testcase name="mcsLock" classname="unam.ciencias.computoconcurrente.LockTest" time="0.19"/>
 </testsuite>
