@@ -215,16 +215,88 @@ todos los hilos ejecutan el mismo código) si los semáforos son débiles, pero 
 podría ocurrir si los semáforos son fuertes. Tu código no debe tener deadlocks,
 independientemente del tipo de semáforo que se utilice.
 
+
+\begin{lstlisting}
+public class SimpleBoard<T>(){
+
+private int readers = 0;
+private semaphore emptySC = new Semaphore(1);
+private T message;
+private Semaphore permiteLector = new Semaphore(1);
+
+
+public void write (T msg){
+	emptySC.acquire();
+	message = msg;
+	emptySC.realease();
+
+} 
+
+public void read(){
+	permiteLector.acquire();
+	if(readers == 0) emptySC.acquire();
+	readers ++;
+	permiteLector.realease();
+
+}
+
+}
+
+\end{lstlisting}
+
+
+Para este caso un hilo $t_{k}$ muere de inanicion si un semaforo es debil ya que los semaforos debiles tienen la caracteristica de mandar cualquier hilo osea que no cumplen la caracteriztica de justicia, en los semaforos fuertes van entrando de una manera ordenada en este caso el hilo $t_{k}$ no muere de inanicion ya que en el turno k pasara.
+
+
+
 \item[7. ]Considera el siguiete código:\\
 
 \includegraphics[width=0.9\textwidth]{siete.png}\\
 \begin{itemize}
 \item[a) ]Demuestra que no tiene deadlocks bajo el supuesto de que los hilos invocan infinitamente los métodos foo1() y foo2().
+
+Supongamos que existe un deadlook entonces los hilos se encolan en c y d para esto la variable x tiene que tener el valor de 2 y de 0 al mismo tiempo notemos que esto no es posible ya que el candado aseguira la exclusion mutua para la variable compartida x.
+
 \item[b) ]Supón ahora que el sistema incluye únicamente los hilos t, u, v. Describe
 un escenario en donde el hilo t en algún punto muere de inanición. Ningún
 hilo falla, por lo que el calendarizador puede ejecutarlos en cualquier
 momento.
+
+En esta ejecucion consiste en atorar a t en la cola c y mantener con los hilos u y v el valor de $x > 0$ para que el hilo t nunca despierte.
+
+
+\begin{center}
+
+
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+hilo t & hilo c & hilo v & memoria \\ 
+\hline 
+ &  &  & x =1 \\ 
+\hline 
+foo1, x = x+1 &  &  & x = 2 \\ 
+\hline 
+foo1 , read(x),c.wait() &  &  & x =2 \\ 
+\hline 
+ & foo2,x = x-1 &  & x = 1 \\ 
+\hline 
+ &  & foo1,x =x+1 & x = 2 \\ 
+\hline 
+ & foo2, x = x-1 &  & x = 1 \\ 
+\hline 
+ &  & foo1,x =x+1 &  x = 2 \\ 
+\hline 
+ & foo2, x = x-1 &  & x = 1 \\ 
+\hline 
+\end{tabular} 
+
+\end{center}
+
+
 \end{itemize}
+
+\newpage
 
 \item[8. ]Otra manera de resolver el problema de la barrera reutilizable para N hilos
 es la siguiente: Un hilo especial llamado manager espera por todos los hilos
@@ -232,9 +304,55 @@ participantes a que lleguen a la barrera. Cuando todos llegan les devuelve la
 señal a todos. Muestra un algoritmo que implemente esta misma idea utilizando
 semáforos y demuestra que ningún hilo puede traspasar la barrera dos o más
 veces seguidas.
+\begin{lstlisting}
+
+public void enter(){
+	syncronized(this){
+		thread.manager.wakeup();
+		if(thread.name == Manager){
+			while(haveEnter != N){
+				thread.sleep();			
+			}
+				gate.release();
+				notifyAll();			
+					
+		}	
+	}else{
+		if(semaphores[thread.ID].getValue()<1){
+			semaphores[thread.ID].release();
+			haveenter++;		
+		}else{
+			wait();		
+		}
+	}
+}
 
 
+\end{lstlisting}
+
+\begin{lstlisting}
+
+public void leave(){
+	syncronized(this){
+		if(thread.name = manager){
+			while(haveEneter != 0){
+				thread.sleep();			
+			}	
+			gate.acquire();
+		}else{
+			if(semaphores[thread.ID].getValue > 0){
+				semaphores[thread.ID].acquire();
+				haveEneter--;			
+			}
+		}
+	}
+}
+
+\end{lstlisting}
+
+Para esta solucion utilizamos un arreglo de semaforos donde cada hilo tiene un semaforo para entrar a la barrera el hilo manager verifica el numero de hilos que han dado permiso a su propio semaforo una vez que todos los semaforos estan prendidos entra a la seccion critica, el metodo leave verifica que todos los hilos abandonen la barrera y el hilo manager cierra la puerta para volverla reutilizable.
 
 
 \end{itemize}
+
 \end{document}
