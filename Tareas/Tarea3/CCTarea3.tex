@@ -58,12 +58,36 @@ Por lo cual la instrucción genera una condición de carrera ya el resultado del
 \item[• ] Condición por los datos:\\
 De igual manera la instrucción de la línea 7 genera una condición por los datos, ya que ambos hilos acceden al valor de la variable $count$ lo leen y existe una escritura cuando se reasigna el valor de la misma.
 
-\item[• ] Otro:
+\item[• ] Despertar perdido: suponiendo que los hilos necesitan un $\textbf{signal()}$ para despertar de un $\textbf{await()}$, entonces el programa cuenta con el problema del despertar perdido para el hilo princial, ya que este es mandado en dos ocasiones en el $for$ pero nunca despertado.
 
-\item[• ] Otro:
-
+\item[• ] De resultado: dado que el programa pretende que se imprima en toda ocasión el valor de 2, este código puede hacer la consulta de la variable $count$ antes de que su valor sea exactamente 2.
 \end{itemize}
 
+
+Solución para que toda ejecución imprima siempre el valor dos.
+
+\begin{lstlisting}
+public static void main(String[] args){
+	int count = 0;
+	ReentrantLock lock = new ReentrantLock();
+	boolean SC = false;
+	
+	Thread t1, t2 = new Thread(new Runnable() {
+		public void run(){
+			lock.lock(); // Aseguramos que la variable compartida sea escrita independientemente
+			count++;
+			lock,unlock();
+		}
+	});
+	t1.start();
+	t2.start();
+	// Hacemos al hilo main hasta que el count sea 2.
+	while(count != 2){
+		this.sleep();
+	}
+	System.out.println(count);
+}
+\end{lstlisting}
 
 \item[2. ] Utilizando únicamente semáforos crea una estructura de datos concurrente que
 pueda guardar N objetos, y que implemente la siguiente interfaz:\\
@@ -200,6 +224,9 @@ public void unlock(){
 
 \end{lstlisting}
 \end{minipage}
+(Suponiendo que la varibale readersAcquires y readers son la misma)
+
+Dado que en la implementación se hace uso de candados para asegurar la exclusión mutua para la variable compartida $\textbf{readers}$, entonces se sabe que el valor de esta misma variable es la correcta en todo momento en el que es consultada o escrita, ya que un lector entra aumenta la variable y cuando sale la decrementa. Por lo que en el método $\textbf{unlock()}$ por parte de los lectores, existe la condición de hacer el $\textbf{signalAll()}$ sobre la cola de espera $\textbf{condition}$ es únicamente cuando el último lector hizo uso de la sección crítica y este está indicando su salida de cuaquier posible uso, por lo que el valor de la variable $\textbf{readers}$ es igual a 0, indicando que no existe ningún lector en ese tiempo de ejecución con lo cual en la cola de espera habría solo hilos escritores bloqueados.
 
 \item[5. ][2 pts] En clase vimos que la implementación de la estructura SimpleBoard le
 da prioridad a los lectores. Posteriormente, discutimos una implementación que
@@ -208,7 +235,71 @@ SimpleBoard para que ahora únicamente use semáforos. Argumenta porque no
 puede haber un escritor y lector dentro de la S.C. Hint: Utiliza 4 semáforos
 binarios, dos de ellos para proteger las escrituras a las variables y los otros 2
 para controlar la entrada de los lectores y escritores.
+\begin{lstlisting}
 
+class SimpleBoard{
+	int writersCounter;
+	int readersCounter;
+	Object recursoCompartido;
+	
+	// Dos semaforos para contar los lectores y escritores
+	Semaphore writeLock = new Semaphore(1);
+	Semaphore readLock = new Semaphore(1);
+	
+	//Dos semaforos para control de entrada y salida
+	Semaphore readTry = new Semaphore(1);
+	Semaphore resLock = new Semaphore(1);
+	
+	public void writer(){
+	
+		writeLock.acquire();
+		writersCounter++;
+		// Si es el primer escritor quita prepermiso de los lectores
+		if (writersCounter == 1){
+			readTry.acquire();	// Evita que los lectores intenten pasar
+		}
+		writeLock.release();
+		
+		resLock.acquire();
+		//Uso del recurso
+		resLock.release();
+		
+		writeLock.acquire();
+		writersCounter--;
+		// Si es el ultimo escritor libera el prepermiso de lectores
+		if(writersCounter == 0){
+			readTry.release();	// Permite que los lectores intenten pasar
+		}
+		writeLock().release();
+	}
+
+	public void Read(){
+	
+		// Se detienen los lectores cuando ya pasara un escritor
+		readTry.acquire();
+		readLock.acquire();
+		readersCounter ++;
+		// Si es el primer lector toma el permiso para leer el recurso
+		if(readersCounter == 1){	
+			resLock.acquire();	// Todos los lectores ya formados usan el recurso
+		}
+		readLock.release();
+		//Uso del recurso
+		readLock.acquire();
+		readersCounter--;
+		//Si es el ultimo lector libera el permiso para usar el recurso		
+		if(readersCounter == 0){	
+			resLock.release();	// Permite que alguien mas pueda usar el recurso
+		}
+		readLock.release();
+	}
+
+
+}
+
+\end{lstlisting}
+
+No puede existir un lector y escritor al mismo tiempo dentro de la SC, debido a que tenemos un semaforo binario $\textbf{resLock}$ que regula la entrada para el uso de la SC, por lo que al ser binario, únicamente podrá pasar un lector o un escritor.
 \item[6. ]Escribe un código genérico utilizando semáforos (de preferencia muy corto)
 para un hilo tk de manera que se pueda producir inanición (suponiendo que
 todos los hilos ejecutan el mismo código) si los semáforos son débiles, pero no
