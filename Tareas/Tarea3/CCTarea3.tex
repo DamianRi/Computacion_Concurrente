@@ -355,10 +355,7 @@ momento.
 
 En esta ejecucion consiste en atorar a t en la cola c y mantener con los hilos u y v el valor de $x > 0$ para que el hilo t nunca despierte.
 
-
 \begin{center}
-
-
 
 \begin{tabular}{|c|c|c|c|}
 \hline 
@@ -379,15 +376,15 @@ foo1 , read(x),c.wait() &  &  & x =2 \\
  &  & foo1,x =x+1 &  x = 2 \\ 
 \hline 
  & foo2, x = x-1 &  & x = 1 \\ 
-\hline 
+\hline
+ & ... & ... & x = ... \\
+\hline
 \end{tabular} 
 
 \end{center}
-
+Repetimos las últimas dos ejecuciones siempre, dejando al hilo t esperadno infinitamente
 
 \end{itemize}
-
-\newpage
 
 \item[8. ]Otra manera de resolver el problema de la barrera reutilizable para N hilos
 es la siguiente: Un hilo especial llamado manager espera por todos los hilos
