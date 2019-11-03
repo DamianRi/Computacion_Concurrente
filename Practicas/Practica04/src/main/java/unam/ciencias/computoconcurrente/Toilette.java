@@ -15,10 +15,10 @@ public class Toilette {
 
 
 
-    int maleCounterUsing = 0;
-    int femaleCounterUsing = 0;
-    int maleCounterWaiting = 0;
-    int femaleCounterWaiting = 0;
+   volatile int menCounterUsing = 0;
+   volatile int womenCounterUsing = 0;
+   volatile int menCounterWaiting = 0;
+   volatile int womenCounterWaiting = 0;
 
 
     public Toilette() {
@@ -28,28 +28,23 @@ public class Toilette {
 
 
     public void enterMale(){
-        /*
-        useTM.lock();
-        useT.lock();
-        maleCounterUsing.getAndIncrement();
-        this.timesMalesEntered ++;
-    */
         try{
-            look.lock();
-            while(femaleCounterUsing != 0){
-                maleCounterWaiting++;
-                menWaitingQueue.await();
-            }
-            if (maleCounterWaiting < 0) {
-                maleCounterWaiting = 0;
-            }else{
-                maleCounterWaiting--;
-            }
-            maleCounterUsing++;
-            this.timesMalesEntered++;
+        look.lock();
 
+        while(womenCounterUsing > 0){
+            System.out.println("Hombre Esperando");
+            System.out.println(womenCounterUsing + " Mujeres usando baño");
+            womenWaitingQueue.signalAll();
+            menWaitingQueue.signalAll();
+            menWaitingQueue.await();
+        }
+        if(womenCounterUsing == 0){
+            System.out.println(womenCounterUsing + "Mujeres que estan en el baño");
+            System.out.println("Entra Hombre");
+            menCounterUsing ++;
             look.unlock();
-
+        }
+        
         }catch(InterruptedException e){
             look.unlock();
         }
@@ -59,49 +54,33 @@ public class Toilette {
     
 
     public void leaveMale(){
-
-        /*
-        maleCounterUsing.getAndDecrement();
-        if(maleCounterUsing.get() == 0){
-            useT.unlock();
-        }else{
-            useTM.unlock();
-        }
-        */
         look.lock();
-        maleCounterUsing--;
-        if (femaleCounterWaiting != 0) {
+        
+        menCounterUsing--;
+        if(menCounterUsing == 0){
             womenWaitingQueue.signalAll();
         }
-
         look.unlock();
-
-
     }   
 
     public void enterFemale(){
 
-        /*
-        useTF.lock();
-        useT.lock();
-        femaleCounterUsing.getAndIncrement();
-        this.timesFemalesEntered ++;
-        **/
         try{
             look.lock();
-            while(maleCounterUsing != 0){
-                femaleCounterWaiting++;
+            while(menCounterUsing > 0){
+                System.out.println("Mujer Esperando");
+                menWaitingQueue.signalAll();
+                womenWaitingQueue.signalAll();
                 womenWaitingQueue.await();
             }
-            if (femaleCounterWaiting < 0) {
-                femaleCounterWaiting = 0;
-            }else{
-                femaleCounterWaiting--;
-            }
-            femaleCounterUsing++;
-            this.timesFemalesEntered++;
+            if(menCounterUsing == 0){
 
-            look.unlock();
+               
+                womenCounterUsing ++;
+                System.out.println("Total de mujeres usando el baño " + womenCounterUsing);
+                look.unlock();
+
+            }
 
         }catch(InterruptedException e){
             look.unlock();
@@ -112,20 +91,13 @@ public class Toilette {
     
 
     public void leaveFemale(){
-        /*
-        femaleCounterUsing.getAndDecrement();
-        if(femaleCounterUsing.get() == 0){
-            useT.unlock();
-        }else{
-            useTF.unlock();
-        }
-        **/
+
         look.lock();
-        femaleCounterUsing--;
-        if (maleCounterWaiting != 0) {
+        womenCounterUsing --;
+        System.out.println("Mujer saliendo " + womenCounterUsing);
+        if(womenCounterUsing == 0){
             menWaitingQueue.signalAll();
         }
-                
         look.unlock();
 
 
