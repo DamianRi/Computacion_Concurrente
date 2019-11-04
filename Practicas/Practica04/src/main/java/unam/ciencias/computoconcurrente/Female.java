@@ -7,7 +7,7 @@ public class Female extends Participant {
     }
 
     @Override
-    public void enterToilette() {
+    public void enterToilette() throws InterruptedException {
         this.toilette.enterFemale();
     }
 

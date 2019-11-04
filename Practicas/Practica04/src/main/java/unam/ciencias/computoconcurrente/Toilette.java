@@ -29,11 +29,12 @@ public class Toilette {
     }
 
 
-    public void enterMale(){
+    public void enterMale() throws InterruptedException {
         look.lock();
         
-        try{
-        if(free_resources != 0 && womenCounterUsing != 0){
+       
+
+        if(free_resources > 0 && womenCounterUsing > 0){
             menCounterWaiting ++;
             menWaitingQueue.await();
         }   
@@ -41,12 +42,8 @@ public class Toilette {
             menCounterWaiting --;
             timesMalesEntered ++;
             menCounterUsing ++;
-            
+            System.out.println("Hombre entrando " + menCounterUsing);
         
-
-        }catch(InterruptedException e){
-            look.unlock();
-        }
 
         look.unlock();
     }
@@ -56,19 +53,23 @@ public class Toilette {
 
     public void leaveMale(){
         look.lock();
+        if(menCounterUsing >0){
         free_resources ++;
         menCounterUsing--;
+        System.out.println("Hombre Saliendo " + menCounterUsing);
         if(womenCounterWaiting != 0){
             womenWaitingQueue.signal();
         }else{
             menWaitingQueue.signal();
         }
+    }
         look.unlock();
     }   
 
-    public void enterFemale(){
+    public void enterFemale() throws InterruptedException {
+     
         look.lock();
-        try{
+      
             if(free_resources != 0 && menCounterUsing !=0 ){
                 womenCounterWaiting ++;
                 womenWaitingQueue.await();
@@ -77,11 +78,8 @@ public class Toilette {
                 womenCounterWaiting--;
                 timesFemalesEntered ++;
                 womenCounterUsing++;
-            
+                System.out.println("Mujer entrando " + womenCounterUsing);
         
-        }catch(InterruptedException e){
-            look.unlock();
-        }
 
         look.unlock();
    
@@ -91,13 +89,16 @@ public class Toilette {
     public void leaveFemale(){
 
         look.lock();
+        if(womenCounterUsing >0){
         womenCounterUsing--;
+        System.out.println("Mujer Saliendo " + womenCounterUsing);
         free_resources ++;
         if(menCounterWaiting != 0){
             menWaitingQueue.signal();
         }else{
             womenWaitingQueue.signal();
         }
+    }
         look.unlock();
     }
 

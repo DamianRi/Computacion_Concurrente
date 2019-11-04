@@ -16,7 +16,7 @@ public abstract class Participant implements Runnable {
         this.timesEnteredTheToilette = 0;
     }
 
-    public abstract void enterToilette();
+    public abstract void enterToilette() throws InterruptedException;
     public abstract void leaveToilette();
 
     public void run() {

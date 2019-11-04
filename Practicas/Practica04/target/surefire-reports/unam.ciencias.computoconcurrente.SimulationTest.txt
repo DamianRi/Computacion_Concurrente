@@ -1,24 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: unam.ciencias.computoconcurrente.SimulationTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 40.227 s <<< FAILURE! - in unam.ciencias.computoconcurrente.SimulationTest
-testOneMaleAndSeveralFemale  Time elapsed: 10.125 s  <<< FAILURE!
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 40.223 s <<< FAILURE! - in unam.ciencias.computoconcurrente.SimulationTest
+testOneMaleAndSeveralFemale  Time elapsed: 10.107 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at unam.ciencias.computoconcurrente.SimulationTest.verifyState(SimulationTest.java:149)
 	at unam.ciencias.computoconcurrente.SimulationTest.testOneMaleAndSeveralFemale(SimulationTest.java:45)
 
-testSeveralMaleAndOneFemale  Time elapsed: 10.022 s  <<< FAILURE!
+testSeveralMaleAndOneFemale  Time elapsed: 10.023 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at unam.ciencias.computoconcurrente.SimulationTest.verifyState(SimulationTest.java:149)
 	at unam.ciencias.computoconcurrente.SimulationTest.testSeveralMaleAndOneFemale(SimulationTest.java:39)
 
-testSeveralMaleAndSeveralFemale  Time elapsed: 10.075 s  <<< FAILURE!
+testSeveralMaleAndSeveralFemale  Time elapsed: 10.09 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at unam.ciencias.computoconcurrente.SimulationTest.verifyState(SimulationTest.java:149)
 	at unam.ciencias.computoconcurrente.SimulationTest.testSeveralMaleAndSeveralFemale(SimulationTest.java:51)
 
-testOneMaleAndOneFemale  Time elapsed: 9.99 s  <<< FAILURE!
+testOneMaleAndOneFemale  Time elapsed: 9.968 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at unam.ciencias.computoconcurrente.SimulationTest.verifyState(SimulationTest.java:149)
+	at unam.ciencias.computoconcurrente.SimulationTest.verifyState(SimulationTest.java:150)
 	at unam.ciencias.computoconcurrente.SimulationTest.testOneMaleAndOneFemale(SimulationTest.java:33)
 
