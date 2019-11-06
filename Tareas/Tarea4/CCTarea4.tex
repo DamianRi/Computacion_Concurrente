@@ -199,10 +199,27 @@ $\textbf{Historia 3b}\\
 $\\
 Precedencia = $\{ r.write(2) \rightarrow r.write(1), r.write(1) \rightarrow r.read(1), r.read(1) \rightarrow r.read(1)\}$ más todas las relaciones de precedencia que se dan por la transitividad
 
-\item[4. ] Da un ejemplo de una ejecución que tenga consistencia de quietud pero no secuencial; y otra que tenga consistencia secuencial pero no de quietud. Argumenta porque las ejecuciones no cumplen con cada propiedad.
+\item[4. ] Da un ejemplo de una ejecución que tenga consistencia de quietud pero no secuencial; y otra que tenga consistencia secuencial pero no de quietud. Argumenta porque las ejecuciones no cumplen con cada propiedad.\\
+$\textbf{Consistencia de quietud, no secuencial}$: No se pueden ordenar las llamadas de los métodos de manera que se lea 1 y 2 sin a ver escrito 2 y 1. Si se leyó 1 debió escribirse 2 y 1, pero ya no se podría leer 2, si se leyó 2 se escribió 2, pero previamente no se pudo haber leído 1.
+
+\includegraphics[width=0.9\textwidth]{4_1.png}\\
+
+$\textbf{Consistencia Secuencial, no de quietud}$: Antes del espacio de quietud la última escritura debe ser 0 ó 1, pero después del espacio de quietud se debe poder leer 0 y 1, pero la última escritura solo puede tener un valor. Por lo que si la última escritura (antes del tiempo de quietud) fue 0, no podríamos leer 0 y después 1, y viceversa, si la última escritura (antes del tiempo de quietud) fue 1, no podríamos leer 1 y luego 0.
+
+\includegraphics[width=0.9\textwidth]{4_2.png}\\
 
 \item[5. ] Suponiendo que en el sistema existe un solo hilo, ¿Es la consistencia de quietud
-equivalente a la consistencia secuencial? Argumenta formalmente.
+equivalente a la consistencia secuencial? Argumenta formalmente.\\
+Sí. Veamos la consistencia de quietud de un hilo, llamemosle $A$. Como la ejecución de un hilo es secuencial, entonces cada llamada a un método tiene inmediatamente su regreso
+\begin{equation*}
+\begin{split}
+&...\\
+&<A, objeto.metodo()> \\
+&<A, objeto:regreso>\\
+&...
+\end{split}
+\end{equation*}  
+Con lo cual los tiempos de quietud de la ejecución de un hilo, están entre cada llamada de un método. Por esto si tenemos una llamada $m_i$ que precede a la llamada $m_{i+1}$ esto es $m_i \rightarrow m_{i+1}$ entre cada tiempo de quietud solo podemos reordenar una única llamada a método $m_x$ con lo cual en la consistencia de quietud del hilo A, cada relación de precedencia $m_i \rightarrow m_{i+1}$ se mantiene igual y como la ejecución de un hilo es secuencial entonces la relación de precedencia $m_i \rightarrow m_{i+1}$ en la consistencia secuencial se mantiene igual, por lo que al hacer $H|A$ en la consistencia de quietud será la misma al hacer $H|A$ en la consistencia secuencual.
 
 \item[6 .] Al igual como le hicimos con la linearizabilidad, define formalmente el concepto
 de consistencia de quietud. HINT: Define la noción de un bloque sin quietud y agrega la precedencia de eventos $(\rightarrow)$ entre ellos.
