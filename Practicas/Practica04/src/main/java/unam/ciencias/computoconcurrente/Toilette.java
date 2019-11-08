@@ -28,48 +28,48 @@ public class Toilette {
 
     public void enterMale() throws InterruptedException {
         look.lock();
-        while(hayMuejeres() && womenCounterWaiting !=0){
+        // Los hombres esperan hasta que ya no haya mujer usando el baño
+        while(hayMujeres() && womenCounterWaiting !=0){
             menCounterWaiting ++;
-            menWaitingQueue.await();
+            menWaitingQueue.await();    //Hacemos esperar a los hombres
             menCounterWaiting --;
         }
-        womenCounterUsing ++;
         timesFemalesEntered++;
-
+        womenCounterUsing ++;
         look.unlock();
-
     }
-
-
-    
 
     public void leaveMale(){
         look.lock();
         menCounterUsing--;
-        if(menCounterUsing <= 0 && womenCounterWaiting != 0) menWaitingQueue.signal();
+        // Solo avisamos si ya no hay hombres
+        // y estan esperando mujeres
+        if(menCounterUsing <= 0 && womenCounterWaiting != 0) 
+            womenWaitingQueue.signal();
         look.unlock();
     }   
 
     public void enterFemale() throws InterruptedException {
         look.lock();
+        // Las muejeres esperan hasta que ya no haya hombre usando el baño
         while(hayHombres() && menCounterWaiting !=0){
             womenCounterWaiting++;
-             womenWaitingQueue.await();
+             womenWaitingQueue.await(); // Hacemos esperar a las mujeres
              womenCounterWaiting --;
         }
-        
         timesFemalesEntered++;
         womenCounterUsing++;
         look.unlock();
    
     }
     
-
     public void leaveFemale(){
-
         look.lock();
         womenCounterUsing--;
-        if(womenCounterUsing <= 0 && menCounterWaiting != 0) menWaitingQueue.signal();
+        // Solo avisamos si ya no hay mujeres
+        // y estan esperando hombres
+        if(womenCounterUsing <= 0 && menCounterWaiting != 0)
+            menWaitingQueue.signal();
         look.unlock();
     }
 
@@ -81,7 +81,7 @@ public class Toilette {
         return timesFemalesEntered;
     }
 
-    public boolean hayMuejeres(){
+    public boolean hayMujeres(){
         return womenCounterUsing > 0;
     }
 

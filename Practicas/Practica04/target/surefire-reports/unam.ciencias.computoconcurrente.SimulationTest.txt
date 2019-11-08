@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: unam.ciencias.computoconcurrente.SimulationTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 40.178 s - in unam.ciencias.computoconcurrente.SimulationTest
-testOneMaleAndSeveralFemale  Time elapsed: 10.067 s
-testSeveralMaleAndOneFemale  Time elapsed: 10.022 s
-testSeveralMaleAndSeveralFemale  Time elapsed: 10.033 s
-testOneMaleAndOneFemale  Time elapsed: 10.012 s
