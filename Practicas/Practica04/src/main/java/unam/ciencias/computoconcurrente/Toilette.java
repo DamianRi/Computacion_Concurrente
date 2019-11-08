@@ -15,7 +15,9 @@ public class Toilette {
     
 
    volatile int menCounterUsing;
+   volatile int menCounterWaiting;
    volatile int womenCounterUsing;
+   volatile int womenCounterWaiting;
  
 
     public Toilette() {
@@ -26,8 +28,11 @@ public class Toilette {
 
     public void enterMale() throws InterruptedException {
         look.lock();
-        while(hayMuejeres()) menWaitingQueue.await();
-
+        while(hayMuejeres() && womenCounterWaiting !=0){
+            menCounterWaiting ++;
+            menWaitingQueue.await();
+            menCounterWaiting --;
+        }
         womenCounterUsing ++;
         timesFemalesEntered++;
 
@@ -41,13 +46,18 @@ public class Toilette {
     public void leaveMale(){
         look.lock();
         menCounterUsing--;
-        if(menCounterUsing <= 0) womenWaitingQueue.signal();
+        if(menCounterUsing <= 0 && womenCounterWaiting != 0) menWaitingQueue.signal();
         look.unlock();
     }   
 
     public void enterFemale() throws InterruptedException {
         look.lock();
-        while(hayHombres()) womenWaitingQueue.await();
+        while(hayHombres() && menCounterWaiting !=0){
+            womenCounterWaiting++;
+             womenWaitingQueue.await();
+             womenCounterWaiting --;
+        }
+        
         timesFemalesEntered++;
         womenCounterUsing++;
         look.unlock();
@@ -59,7 +69,7 @@ public class Toilette {
 
         look.lock();
         womenCounterUsing--;
-        if(womenCounterUsing <= 0) menWaitingQueue.signal();
+        if(womenCounterUsing <= 0 && menCounterWaiting != 0) menWaitingQueue.signal();
         look.unlock();
     }
 
