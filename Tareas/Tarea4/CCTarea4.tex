@@ -210,19 +210,28 @@ $\textbf{Consistencia Secuencial, no de quietud}$: Antes del espacio de quietud 
 
 \item[5. ] Suponiendo que en el sistema existe un solo hilo, ¿Es la consistencia de quietud
 equivalente a la consistencia secuencial? Argumenta formalmente.\\
-Sí. Veamos la consistencia de quietud de un hilo, llamemosle $A$. Como la ejecución de un hilo es secuencial, entonces cada llamada a un método tiene inmediatamente su regreso
-\begin{equation*}
-\begin{split}
-&...\\
-&<A, objeto.metodo()> \\
-&<A, objeto:regreso>\\
-&...
-\end{split}
-\end{equation*}  
-Con lo cual los tiempos de quietud de la ejecución de un hilo, están entre cada llamada de un método. Por esto si tenemos una llamada $m_i$ que precede a la llamada $m_{i+1}$ esto es $m_i \rightarrow m_{i+1}$ entre cada tiempo de quietud solo podemos reordenar una única llamada a método $m_x$ con lo cual en la consistencia de quietud del hilo A, cada relación de precedencia $m_i \rightarrow m_{i+1}$ se mantiene igual y como la ejecución de un hilo es secuencial entonces la relación de precedencia $m_i \rightarrow m_{i+1}$ en la consistencia secuencial se mantiene igual, por lo que al hacer $H|A$ en la consistencia de quietud será la misma al hacer $H|A$ en la consistencia secuencual.
+Supongamos que existe un solo hilo A.
+
+Supongamos que el A cumple con la consistencia de quietud.\\
+Entonces sabemos que entre espacios de quietud se tiene un orden entre las llamadas a los métodos de manera que cumplen con la especificación del objeto. Notemos que por ser un único hilo, la ejecución de los métodos es secuencial, lo cual indica que para cada llamada a un método tenemos inmediatamente su regreso, $e_i \rightarrow e_{i+1}$, donde $e$ es la llamada al método y $e_{i+1}$ es el regreso de este. Denotemos a esto como $m_i$. Ahora, sabemos que los espacios de quietud existen entre las llamadas (y regresos) de métodos, $m_i$ y $m_{i+1}$, así la consistencia secuencial mantiene en mismo orden de llamadas a métodos que en la consistencia de quietud, con lo cual se sigue cumpliendo la especificación del objeto y además $H|A$ será el mismo en ambas cosistencias.
+\\
+
+Supongamos que se cumple la consistencia secuencial.\\
+Como es un solo hilo su ejecución será secuencuencial. Lo cual nos indica que los espacios de quietud solo existen entre las llamadas a métodos $m_i$ y $m_{i+1}$, así como se cumple la especificación del objeto, la única manera de reordenar las llamadas a métodos entre espacios de quietud es la misma puesto que solo existe una única llamada $m_k$, y así en la consistencia de quietud se mantendrá el mismo orden de las llamadas que el la consistencia secuencial, por lo tando cumplirá con la especificación del objeto y $H|A$ será la misma en ambas consistencias.
+
+Por lo tanto se cumple la equivalencia.
 
 \item[6 .] Al igual como le hicimos con la linearizabilidad, define formalmente el concepto
-de consistencia de quietud. HINT: Define la noción de un bloque sin quietud y agrega la precedencia de eventos $(\rightarrow)$ entre ellos.
+de consistencia de quietud. HINT: Define la noción de un bloque sin quietud y agrega la precedencia de eventos $(\rightarrow)$ entre ellos.\\
+$\textbf{Definición}$. Un $\textbf{bloque sin quitud}$, es un conjunto de llamadas a métodos con sus respectivos regresos, acotado por la izquierda y derecha por un tiempo de quietud, de manera que si te colocas en un tiempo dentro de su ejecución la proyección de los métodos tendrá un regreso pendiente para alguna llamada.\\
+
+$\textbf{Precedencia entre bloques sin quietud}$, sean dos bloques sin quietud, $B_1$ y $B_2$, cada uno con su conjunto de llamadas a métodos 
+$$B_1 = \{m_{11}, m_{12}, ... , m_{1n} \},  B_2 = \{m_{21}, m_{22}, ... , m_{2n} \}$$
+Diremos que $B_1$ precede a $B_2$, dentonado como $B_1 \rightarrow B_2$, si para toda llamada $m_{i1} \in B_1$ y toda llamada $m_{i2} \in B_2$ se tiene que $m_{i1} \rightarrow m_{i2}$.\\
+
+$\textbf{Definición}.$ Una ejecución cumple con consistencia de quietud, si para todo\\
+$\textit{bloque sin quietud}, B_i$, existe una permutación entre las llamadas a métodos de cada $B_i$ tal que para cada relación de precedencia $B_i \rightarrow B_{i+1}$ está cumple con la especificación del objeto.
+
 
 \item[7. ]Demuestra por qué la consistencia de $\textbf{quietud}$ es composicional.
 
