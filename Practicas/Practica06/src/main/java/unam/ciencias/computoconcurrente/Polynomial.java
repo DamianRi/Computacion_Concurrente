@@ -43,65 +43,56 @@ public class Polynomial {
         return result;
     }
 
-    // Suma recurdiavamente dos polinomios.
-    public void suma (Polynomial p, Polynomial result){
-        // Caso base.
+    public void add(Polynomial p, Polynomial result){
+
         if (p.getDegree() == 1) {
             result.set(p.first,(this.get(0) + p.get(0)));
             return;
         }
-        // Llamada recursiva.
-        // Dividimos los dos polinomios.
         Polynomial[] polinomios_1 = this.split(); 
         Polynomial[] polinomios_2 = p.split();
         CompletableFuture<Void> c1 = CompletableFuture.runAsync(() -> {
-            // Sumamos el lado izquierdo.
-            polinomios_1[0].suma(polinomios_2[0],result);
+            polinomios_1[0].add(polinomios_2[0],result);
         }); 
         CompletableFuture<Void> c2 = CompletableFuture.runAsync(() -> {
-            // Sumamos el lado derecho.
-            polinomios_1[1].suma(polinomios_2[1],result); 
+            polinomios_1[1].add(polinomios_2[1],result); 
         });
 
         try {
            c1.get(); c2.get(); 
         } catch (Exception e) {
-            System.out.println("Falló :(");
+            System.out.println("Error");
         } 
     }
 
-    public void multiplica (Polynomial p, Polynomial result){
-        // Caso base.
-        if (this.getDegree() == 1) { // No sé si tendrían que ser los dos, hmmm.
-            // System.out.println(p.first + " " + this.first);
+
+    public void multiply(Polynomial p, Polynomial result){
+
+        if (this.getDegree() == 1) { 
             result.update(p.first + this.first,(this.get(0) * p.get(0)));
             return;
         }
-     
         Polynomial[] polinomios_1 = this.split(); 
         Polynomial[] polinomios_2 = p.split();
      
         CompletableFuture<Void> c1 = CompletableFuture.runAsync(() -> {
-            //P0(x) * Q0(x)
-            polinomios_1[0].multiplica(polinomios_2[0],result); 
+
+            polinomios_1[0].multiply(polinomios_2[0],result); 
         });
         CompletableFuture<Void> c2 = CompletableFuture.runAsync(() -> {
-            // P0(x) * Q1(x) 
-            polinomios_1[0].multiplica(polinomios_2[1],result);
+            polinomios_1[0].multiply(polinomios_2[1],result);
         });
         CompletableFuture<Void> c3 = CompletableFuture.runAsync(() -> {
-            // P1(x) * Q0(x)
-            polinomios_1[1].multiplica(polinomios_2[0],result); 
+            polinomios_1[1].multiply(polinomios_2[0],result); 
         });
         CompletableFuture<Void> c4 = CompletableFuture.runAsync(() -> {
-            // P1(x) * Q1(x)
-            polinomios_1[1].multiplica(polinomios_2[1],result);
+            polinomios_1[1].multiply(polinomios_2[1],result);
         });
 
         try {
            c1.get(); c2.get(); c3.get(); c4.get(); 
         } catch (Exception e) {
-            System.out.println("Falló :(");
+            System.out.println("Error");
         } 
     }
 
@@ -113,7 +104,6 @@ public class Polynomial {
                 s += "+ ";
             }
         }
-
         return s;
     }
 
