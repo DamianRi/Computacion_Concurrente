@@ -17,8 +17,8 @@ class PolynomialTest {
 
         Polynomial esperado = new Polynomial(arr3,0,degree);
 
-        Polynomial polinomio1     = new Polynomial(arr1, 0, degree);
-        Polynomial polinomio2     = new Polynomial(arr2, 0, degree);
+        Polynomial polinomio1  = new Polynomial(arr1, 0, degree);
+        Polynomial polinomio2  = new Polynomial(arr2, 0, degree);
         Polynomial result2 = new Polynomial(degree);
     
         polinomio2.add(polinomio1,result2);

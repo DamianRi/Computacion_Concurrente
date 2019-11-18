@@ -49,6 +49,10 @@ public class Polynomial {
             result.set(p.first,(this.get(0) + p.get(0)));
             return;
         }
+        if (this.getDegree() == 1) {
+            result.set(p.first,(this.get(0) + p.get(0)));
+            return;
+        }
         Polynomial[] polinomios_1 = this.split(); 
         Polynomial[] polinomios_2 = p.split();
         CompletableFuture<Void> c1 = CompletableFuture.runAsync(() -> {
