@@ -1,6 +1,0 @@
--------------------------------------------------------------------------------
-Test set: unam.ciencias.computoconcurrente.PolynomialTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in unam.ciencias.computoconcurrente.PolynomialTest
-add  Time elapsed: 0.029 s
-multiply  Time elapsed: 0.01 s
